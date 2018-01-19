@@ -1,7 +1,6 @@
 library(thermopic)
 library(chron)
 library(plyr)
-# library(XLConnect)
 library(rLakeAnalyzer)
 library(rootSolve)
 library(RColorBrewer)
