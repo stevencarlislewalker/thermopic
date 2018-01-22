@@ -3,7 +3,6 @@
 #' @param path Character string containing the path to the root of a thermopic project
 #' @param laked TODO
 #' @param sited TODO
-#' @param UserOptions TODO
 #' @param year_fix TODO
 #' @return s3 object of class thermopic_model, containing output dataframes
 #' @export
@@ -15,11 +14,10 @@
 #' @importFrom rLakeAnalyzer layer.density
 #' @importFrom rLakeAnalyzer uStar
 #' @importFrom rLakeAnalyzer lake.number
-thermopic_model = function(path, laked, sited, UserOptions, year_fix = 2010) {
+thermopic_model = function(path, laked, sited, year_fix = 2010) {
   
   laked = get_thermopic_data(laked, path, 'DataIn')
   sited = get_thermopic_data(sited, path, 'DataIn')
-  UserOptions = get_thermopic_data(UserOptions, path, 'DataIn')
   
   Nsites <- length(sited$Period)
 

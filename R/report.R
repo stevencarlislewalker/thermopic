@@ -280,7 +280,7 @@ thermopic_report = function(path, spaced, Options, show_progress_bar = FALSE) {
         tiff(filename = TIFFName, width = 5, height = 7, units = "in", pointsize=18, compression= "lzw",bg = "white",res=400)
         }
         if(TP_format == "JPEG")
-        {JPEGName <- paste(TP_root,FMZ,"_",Lake_Name,"_",Wby_Lid,"_P",Period,".jpeg",sep="")
+        {JPEGName <- file.path(TP_root, paste(FMZ,"_",Lake_Name,"_",Wby_Lid,"_P",Period,".jpeg",sep=""))
         jpeg(filename = JPEGName, width = 400, height = 600, units = "px", pointsize=20, bg="white", res=NA, family="")
         }
         
