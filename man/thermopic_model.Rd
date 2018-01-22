@@ -23,3 +23,4 @@ s3 object of class thermopic_model, containing output dataframes
 \description{
 Fit Thermopic Model
 }
+

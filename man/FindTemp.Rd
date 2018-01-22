@@ -19,3 +19,4 @@ FindTemp(endday, startday, starttemp, tslope)
 (Report) Calculate a temperature for a given day based on a known day
 with known temperature and known slope of temperature change
 }
+

@@ -1,21 +1,24 @@
 Package: thermopic
-Title: Predicting and Visualizing the Seasonal Availability of Thermal Habitat in Lakes
+Title: Predicting and Visualizing the Seasonal Availability of Thermal Habitat
+    in Lakes
 Version: 0.0.0.9000
 Authors@R: c(person("Ken", "Minns", email = "", role = c("aut")),
              person("Simon", "Fung", email = "", role = c("aut")),
              person("Brian", "Shutter", email = "", role = c("aut")),
              person("Nigel", "Lester", email = "", role = c("aut")),
              person("Steve", "Walker", email = "swalker@angoss.com", role = c("cre")))
-Description: A ThermoPic is a picture of thermal habitat in a lake. 
-  This software serves three purposes. First, it predicts the seasonal 
-  temperature cycle in lakes based on easily measured variables. Second, 
-  it calculates and reports thermal habitat statistics. Third, it generates 
-  a ThermoPic plot. The model used to predict temperature is referred to as
-  the Seasonal Temperature Model (STM). It was created by Minns et al. (2016)
-  based on data from lakes in the province of Ontario (Canada).
-Depends: R (>= 3.0.0)
-License: GPL-2
+Description: A ThermoPic is a picture of thermal habitat in a lake. This software serves three purposes. First, it predicts the seasonal temperature cycle in lakes based on easily measured variables. Second, it calculates and reports thermal habitat statistics. Third, it generates a ThermoPic plot. The model used to predict temperature is referred to as the Seasonal Temperature Model (STM). It was created by Minns et al. (2016) based on data from lakes in the province of Ontario (Canada).
+Depends:
+    R (>= 3.0.0)
+License: GPL-3 | file LICENSE
 Encoding: UTF-8
+Suggests: R.rsp
+VignetteBuilder: R.rsp
 LazyData: true
-Imports: stats, utils, chron, plyr, XLConnect, rLakeAnalyzer, rootSolve, RColorBrewer
-RoxygenNote: 6.0.1
+Imports:
+    stats,
+    utils,
+    chron,
+    rLakeAnalyzer,
+    RColorBrewer
+RoxygenNote: 5.0.1

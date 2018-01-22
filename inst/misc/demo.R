@@ -1,9 +1,4 @@
 library(thermopic)
-library(chron)
-library(plyr)
-library(rLakeAnalyzer)
-library(rootSolve)
-library(RColorBrewer)
 
 root = tempdir()
 setwd(root)

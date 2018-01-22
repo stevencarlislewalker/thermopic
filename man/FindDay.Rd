@@ -19,3 +19,4 @@ FindDay(endtemp, startday, starttemp, tslope)
 (Report) Calculate a julian day for a given temperature based on a known
 day with known temperature and known slope of temperature change
 }
+

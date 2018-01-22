@@ -18,3 +18,4 @@ Spring isothermal at 4C to Fall/Autumn isothermal at 4C
 Detects Presence of One Continuous  or Two Seasons of Availability
 For Stratified and Unstratified Lakes Respectively
 }
+

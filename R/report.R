@@ -271,11 +271,11 @@ thermopic_report = function(path, spaced, Options, show_progress_bar = FALSE) {
         Lake_Name <- spaced$Lake_Name[i]
         Period <- spaced$Period[i]
         figure_label <- paste(FMZ," ",Lake_Name," (",Wby_Lid,"): ",Period,sep="")
-        #TP_root <- "Data/TP4_"
+        TP_root <- file.path(path, 'DataOut', 'ThermoPics') # path # "Data/TP4_"
         # Write TIFF or JPEG File for a Lake (Or plot on screen)
         #--------------------------------------------------------
         if(TP_format == "TIFF")
-        {TIFFName <- paste(TP_root,FMZ,"_",Lake_Name,"_",Wby_Lid,"_P",Period,".tiff",sep="")
+        {TIFFName <- file.path(TP_root, paste(FMZ,"_",Lake_Name,"_",Wby_Lid,"_P",Period,".tiff",sep=""))
         #tiff(filename = TIFFName, width = 5, height = 8, units = "in", compression= "lzw",,bg = "white",res=400)
         tiff(filename = TIFFName, width = 5, height = 7, units = "in", pointsize=18, compression= "lzw",bg = "white",res=400)
         }
