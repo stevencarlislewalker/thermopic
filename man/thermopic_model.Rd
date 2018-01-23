@@ -4,7 +4,9 @@
 \alias{thermopic_model}
 \title{Fit Thermopic Model}
 \usage{
-thermopic_model(path, laked, sited, UserOptions, year_fix = 2010)
+thermopic_model(path, laked, sited, sited_output_file = "sited.csv",
+  lakep_output_file = "lakep.csv", siteo_output_file = "siteo.csv",
+  STM_output_file = "STM.csv", year_fix = 2010)
 }
 \arguments{
 \item{path}{Character string containing the path to the root of a thermopic project}
@@ -13,7 +15,13 @@ thermopic_model(path, laked, sited, UserOptions, year_fix = 2010)
 
 \item{sited}{TODO}
 
-\item{UserOptions}{TODO}
+\item{sited_output_file}{TODO}
+
+\item{lakep_output_file}{TODO}
+
+\item{siteo_output_file}{TODO}
+
+\item{STM_output_file}{TODO}
 
 \item{year_fix}{TODO}
 }

@@ -3,6 +3,10 @@
 #' @param path Character string containing the path to the root of a thermopic project
 #' @param laked TODO
 #' @param sited TODO
+#' @param sited_output_file TODO
+#' @param lakep_output_file TODO
+#' @param siteo_output_file TODO
+#' @param STM_output_file TODO
 #' @param year_fix TODO
 #' @return s3 object of class thermopic_model, containing output dataframes
 #' @export
@@ -14,10 +18,21 @@
 #' @importFrom rLakeAnalyzer layer.density
 #' @importFrom rLakeAnalyzer uStar
 #' @importFrom rLakeAnalyzer lake.number
-thermopic_model = function(path, laked, sited, year_fix = 2010) {
+thermopic_model = function(
+  path, laked, sited, 
+  sited_output_file = 'sited.csv', 
+  lakep_output_file = 'lakep.csv', 
+  siteo_output_file = 'siteo.csv', 
+  STM_output_file = 'STM.csv',
+  year_fix = 2010) {
   
+  path = file.path(path)
   laked = get_thermopic_data(laked, path, 'DataIn')
   sited = get_thermopic_data(sited, path, 'DataIn')
+  sited_output_file = file.path(path, 'DataOut', sited_output_file)
+  lakep_output_file = file.path(path, 'DataOut', lakep_output_file)
+  siteo_output_file = file.path(path, 'DataOut', siteo_output_file)
+  STM_output_file = file.path(path, 'DataOut', STM_output_file)
   
   Nsites <- length(sited$Period)
 
@@ -211,9 +226,9 @@ thermopic_model = function(path, laked, sited, year_fix = 2010) {
     siteo = siteo,
     lakep = lakep
   )
-  # write.csv(sited, file = file_out1, row.names = FALSE)
-  # write.csv(siteo, file = file_out2, row.names = FALSE)
-  # write.csv(lakep, file = file_out3, row.names = FALSE)
+  write.csv(sited, file = sited_output_file, row.names = FALSE)
+  write.csv(siteo, file = siteo_output_file, row.names = FALSE)
+  write.csv(lakep, file = lakep_output_file, row.names = FALSE)
   
   #------------------------------------------------------------------------------
   # STM Parameter Calculations
@@ -354,7 +369,7 @@ thermopic_model = function(path, laked, sited, year_fix = 2010) {
   # OUTPUT 4_STM_Parameters.csv
   #------------------------------------------------------------------
   output$STM = STM
-  # write.csv(STM, file = file_out4, row.names = FALSE)
+  write.csv(STM, file = STM_output_file, row.names = FALSE)
   structure(
     output,
     class = 'thermopic_model'

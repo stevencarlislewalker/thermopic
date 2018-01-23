@@ -20,8 +20,7 @@ setup_directory(root, overwrite = TRUE)
 fitted_thermopic_model = thermopic_model(
   path = root,
   laked = '1_lake.csv',
-  sited = '2_Climate.csv',
-  UserOptions = '0_User_Options.csv'
+  sited = '2_Climate.csv'
 )
 ```
 
@@ -29,10 +28,15 @@ fitted_thermopic_model = thermopic_model(
 thermopic_report_data = thermopic_report(
   path = root,
   spaced = fitted_thermopic_model$STM,
-  Options = '0_User_Options.csv'
+  Options = '0_User_Options.csv',
+  Nlakes_test = 5
 )
 ```
 
 ```r
+list.files(root)
+list.files(file.path(root, 'DataIn'))
+list.files(file.path(root, 'DataOut'))
+list.files(file.path(root, 'DataOut', 'ThermoPics'))
 unlink(root)
 ```

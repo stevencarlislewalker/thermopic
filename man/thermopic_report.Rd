@@ -4,14 +4,25 @@
 \alias{thermopic_report}
 \title{Thermopic Report}
 \usage{
-thermopic_report(path, spaced, Options, show_progress_bar = FALSE)
+thermopic_report(path, spaced, habitat_output_file, Options, TP_plots,
+  TP_interval, TP_format, TP_folder, Nlakes_test, show_progress_bar = FALSE)
 }
 \arguments{
 \item{path}{Character string containing the path to the root of a thermopic project}
 
 \item{spaced}{TODO}
 
+\item{habitat_output_file}{TODO}
+
 \item{Options}{TODO}
+
+\item{TP_plots}{TODO}
+
+\item{TP_interval}{TODO}
+
+\item{TP_format}{TODO}
+
+\item{Nlakes_test}{TODO}
 
 \item{show_progress_bar}{Should progress bar be displayed to show 
 percentage of lakes analyzed?  Note that this should be FALSE unless

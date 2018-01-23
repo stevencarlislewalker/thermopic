@@ -2,7 +2,12 @@
 #' 
 #' @param path Character string containing the path to the root of a thermopic project
 #' @param spaced TODO
+#' @param habitat_output_file TODO
 #' @param Options TODO
+#' @param TP_plots TODO
+#' @param TP_interval TODO
+#' @param TP_format TODO
+#' @param Nlakes_test TODO
 #' @param show_progress_bar Should progress bar be displayed to show 
 #' percentage of lakes analyzed?  Note that this should be FALSE unless
 #' running in interactive mode at a console.
@@ -20,32 +25,41 @@
 #' @importFrom graphics polygon
 #' @importFrom graphics text
 #' @importFrom graphics box
-thermopic_report = function(path, spaced, Options, show_progress_bar = FALSE) {
-  
+thermopic_report = function(
+  path, spaced, habitat_output_file,
+  Options, 
+  TP_plots, TP_interval, TP_format, TP_folder, Nlakes_test, 
+  show_progress_bar = FALSE
+  ) {
+  path = file.path(path)
   spaced = get_thermopic_data(spaced, path, 'DataOut')
   Options = get_thermopic_data(Options, path, 'DataIn')
+  if(missing(habitat_output_file)) habitat_output_file = 'habitat.csv'
+  habitat_output_file = file.path(path, 'DataOut', habitat_output_file)
   
   #==================================================================
   #Process User Options
   #------------------------------------------------------------------
-  Nlakes_test<-as.numeric(as.character(Options$User[5]))
   
+  if(missing(Nlakes_test)) Nlakes_test = as.character(Options$User[5])
+  Nlakes_test = as.numeric(Nlakes_test)
   
   # Switch for turning off all plotting
-  ThermoPic_on <- ifelse(Options$User[1]=="Yes",TRUE,FALSE)
+  if(missing(TP_plots)) TP_plots = Options$User[1]=="Yes"
+  ThermoPic_on <- ifelse(TP_plots, TRUE, FALSE)
   if (!ThermoPic_on) {spaced$Do_ThermoPic <- FALSE}
   
-  TP_interval  <- as.numeric(as.character(Options$User[2]))
+  if(missing(TP_interval)) TP_interval = Options$User[2]
+  TP_interval  <- as.numeric(as.character(TP_interval))
   TP_text      <- as.character(TP_interval)
-  TP_interval  <- as.numeric(TP_interval)
   TP_interval  <- ifelse(TP_interval>4,4,TP_interval)
   TP_interval  <- ifelse(TP_interval<1,4,TP_interval)
   
   # Choose format = TIFF or JPEG
-  TP_format    <- Options$User[3]
+  if(missing(TP_format)) TP_format = Options$User[3]
   
   # Change default folder for ThermoPics
-  TP_folder    <- Options$User[4]
+  if(missing(TP_folder)) TP_folder = Options$User[4]
   
   #----------------------------------------------------------------------------
   # Set Paramaters and Labels for Space Calculations
@@ -107,7 +121,7 @@ thermopic_report = function(path, spaced, Options, show_progress_bar = FALSE) {
     Nlakes <- Nlakes_test
   }
   
-  lake_progress_bar = txtProgressBar(max = Nlakes, style = 3)
+  if(show_progress_bar) lake_progress_bar = txtProgressBar(max = Nlakes, style = 3)
   for (i in 1:Nlakes)
     # Begin: Lake loop
   {
@@ -376,7 +390,7 @@ thermopic_report = function(path, spaced, Options, show_progress_bar = FALSE) {
       # End: If Do_ThermoPic
     }
     # End: If Do_Space
-    setTxtProgressBar(lake_progress_bar, i)
+    if(show_progress_bar) setTxtProgressBar(lake_progress_bar, i)
   }
   # End: Lake loop
   
@@ -416,6 +430,6 @@ thermopic_report = function(path, spaced, Options, show_progress_bar = FALSE) {
   # Clean up output
   #spaced$DOC <- round(spaced$DOC,digits=1)
   
+  write.csv(habitat, file = habitat_output_file, row.names = FALSE)
   return(habitat)
-  # write.csv(habitat, file = file_out5, row.names = FALSE)
 }
