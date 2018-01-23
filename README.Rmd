@@ -1,22 +1,37 @@
 # thermopic: Predicting and visualizing the seasonal available of thermal habitat in lakes
 
-Installation is simple from an `R` commandline using the `devtools` package.
-```r
+Installation is easiest from an `R` commandline using the `devtools` package.
+```{r, eval=FALSE}
 devtools::install_github('stevencarlislewalker/thermopic')
+```
+
+Once the package is installed, it may be loaded using the `library` function.
+```{r}
 library(thermopic)
 ```
 
-```r
+The `thermopic` package runs within a project directory. Here we create a temporary directory for this tutorial using standard `R` tools.
+```{r}
 root = tempdir()
-setwd(root)
-print(getwd())
 ```
 
-```r
+In this case the temporary directory is located here.
+```{r, echo=FALSE}
+root
+```
+
+We now use `thermopic`'s `setup_directory` function to create the required directory structure for our project.  This function allows some flexibility in how input data are specified.  Here we use the defaults, which extract sample data contained within the package.
+```{r}
 setup_directory(root, overwrite = TRUE)
 ```
 
-```r
+The structure looks like this.
+```{r, echo=FALSE}
+list.files(root, recursive = TRUE, include.dirs = TRUE)
+```
+
+Now that the structure is in place, one may fit the thermopic model.
+```{r}
 fitted_thermopic_model = thermopic_model(
   path = root,
   laked = '1_lake.csv',
@@ -24,19 +39,22 @@ fitted_thermopic_model = thermopic_model(
 )
 ```
 
-```r
+And finally create the report as well as the thermopic images themselves.  For speed we restrict the number of lakes to process to `5`.
+```{r}
 thermopic_report_data = thermopic_report(
   path = root,
   spaced = fitted_thermopic_model$STM,
   Options = '0_User_Options.csv',
-  Nlakes_test = 5
+  Nlakes_test = 5,
+  show_progress_bar = FALSE
 )
 ```
 
-```r
-list.files(root)
-list.files(file.path(root, 'DataIn'))
-list.files(file.path(root, 'DataOut'))
-list.files(file.path(root, 'DataOut', 'ThermoPics'))
+Here we see the resulting outputs including the images in `jpeg` format files.
+```{r, echo=FALSE}
+list.files(root, recursive = TRUE)
+```
+
+```{r, echo=FALSE}
 unlink(root)
 ```
