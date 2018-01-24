@@ -7,6 +7,7 @@
 #' @param TP_plots TODO
 #' @param TP_interval TODO
 #' @param TP_format TODO
+#' @param TP_folder TODO
 #' @param Nlakes_test TODO
 #' @param show_progress_bar Should progress bar be displayed to show 
 #' percentage of lakes analyzed?  Note that this should be FALSE unless
@@ -26,15 +27,15 @@
 #' @importFrom graphics text
 #' @importFrom graphics box
 thermopic_report = function(
-  path, spaced, habitat_output_file,
+  path, spaced, 
   Options, 
   TP_plots, TP_interval, TP_format, TP_folder, Nlakes_test, 
+  habitat_output_file = "5_ThermalSpace4D.csv",
   show_progress_bar = FALSE
   ) {
   path = file.path(path)
   spaced = get_thermopic_data(spaced, path, 'DataOut')
   Options = get_thermopic_data(Options, path, 'DataIn')
-  if(missing(habitat_output_file)) habitat_output_file = 'habitat.csv'
   habitat_output_file = file.path(path, 'DataOut', habitat_output_file)
   
   #==================================================================

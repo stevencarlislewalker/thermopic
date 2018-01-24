@@ -1,5 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^*.Rmd
-^*.html
-^*.docx
+^.*\.Rmd$
+^.*\.html$
+^.*\.docx$

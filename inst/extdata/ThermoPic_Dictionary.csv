@@ -1,73 +1,73 @@
-Variable,Description,Units,       1_Lake,       2_Climate,       3_Model_Inputs,       4_STM_Parameters,        5_ThermalSpace,,
-FMZ,Fishery Management Zone (optional),,1,,,1,1,,
-Group,User-defined (optional),,2,,,2,2,,
-Wby_Lid,Waterbody Location ID (Unique identifier based on Zone Northing Easting),,3,1,1,3,3,,
-Lake_Name,Lake name,,4,,,4,4,,
-Latitude,Laltitude of lake centroid,degrees,5,,,5,,,
-Longitude,Longitude of lake centroid,degrees,6,,,6,,,
-Elevation,Elevation above sea level,m,7,,,7,,,
-Area_ha,Lake area,hectares,8,,,8,5,,
-Shoreline,Shoreline perimeter,km,9,,,9,,,
-Depth_Max,Maximum lake depth,m,10,,,10,6,,
-Depth_Mn,Mean lake depth,m,11,,,11,7,,
-Secchi,Secchi depth,m,12,,,12,,,
-DOC,Dissolved organic carbon concentration,mg/l,13,,,13,,,
-Period,Period for which climate norms are given,,,2,2,14,8,,
-Tjan,Mean air temperature in January for specified Period,°C,,3,,,,,
-Tfeb,Mean air temperature in February for specified Period,°C,,4,,,,,
-Tmar,Mean air temperature in March for specified Period,°C,,5,3,,,,
-Tapr,Mean air temperature in April for specified Period,°C,,6,,,,,
-Tmay,Mean air temperature in May for specified Period,°C,,7,4,,,,
-Tjun,Mean air temperature in June for specified Period,°C,,8,5,,,,
-Tjul,Mean air temperature in July for specified Period,°C,,9,6,,,,
-Taug,Mean air temperature in August for specified Period,°C,,10,7,,,,
-Tsep,Mean air temperature in September for specified Period,°C,,11,8,,,,
-Toct,Mean air temperature in October for specified Period,°C,,12,,,,,
-Tnov,Mean air temperature in November for specified Period,°C,,13,,,,,
-Tdec,Mean air temperature in December for specified Period,°C,,14,,,,,
-Tann,Mean annual air temperature for specified Period,°C,,15,,,,,
-Paug,Mean daily precipitation in August for specified Period,mm,,16,9,,,,
-Tjja,"Mean air temperature in June, July and August for specified Period",°C,,,10,,,,
-Tson,"Mean air temperature in September, October and November for specified Period",°C,,,11,,,,
-J_Spr0,Spring date when 30-day smoothed air temperature rose to 0°C  (Julian day),Julian,,,12,,,,
-J_Aut0,Autumn date when 30-day smoothed air temperature dropped to 0°C  (Julian day),Julian,,,13,,,,
-T_Aut0,Mean air temperature (°C) for the 3-month Autumn period when the central month contains J_Aut0,°C,,,14,,,,
-Ang_Spr0,Angular elevation (degrees) of the sun above the horizon at noon on J_Spr0,degrees,,,15,,,,
-IceBU,Ice cover break up date,Julian,,,16,,,,
-TX,STM parameter maximum surface temperature on JM,°C,,,,15,,,
-TN,STM parameter hypolimnetic temperature at onset of stratification JS,°C,,,,16,,,
-JS,STM parameter day of onset of stratification,Julian,,,,17,,,
-JM,STM parameter day of peak surface temperature,Julian,,,,18,,,
-JE,STM parameter day of end of stratification,Julian,,,,19,,,
-ZTH,"STM parameter thermocline depth on JM (If ZJ=0, ZTH=ZM)",m,,,,20,,,
-ZM,STM parameter maximum thermocline depth,m,,,,21,,,
-ZJ,STM parameter number of days after JS when ZTH attains ZM/2,days,,,,22,,,
-SP,STM parameter steepness of transition from epi- to hypo-limnion,,,,,23,,,
-IceBU,Ice breakup completion date (Ice free date measured relative to start of year when freeze occurred),Julian,,,,24,,,
-IceFU,Ice freezeup completion date (date of first complete ice cover),Julian,,,,25,,,
-Icefree,Duration of icefree (open water) period,days,,,,26,,,
-DataGood,If TRUE then all required parameters have assigned values and thermopic stats computed,,,,,27,,,
-LakeNumber,Computed Lake Number based on STM parameters on JM,,,,,28,,,
-Stratified,If TRUE then lake is thermally stratified  (based on LakeNumber >= 1),logical,,,,29,9,,
-Do_Space,If TRUE then calculate themal habitat space (volume and area),logical,,,,30,,,
-Do_ThermoPic,If TRUE then produce ThermoPic plot,logical,,,,31,,,
-TRange,"Temperature range for estimation of thermal area and volume (e.g.,  T1416 for range = 14-16 C)",,,,,,10,,
-PD_year,Proportion of days in year when TRange is present,,,,,,11,,
-PD_icefree,Proportion of days in icefree season when TRange is present,,,,,,12,,
-TSeasons,"Number of seasons when TRange is present 0, 1 or 2",,,,,,13,,
-Jstart_Spr,Start date of Spring presence of TRange ,Julian,,,,,14,,
-Jend_Spr,End date of Spring presence of TRange (if TSeasons = 2),Julian,,,,,15,,
-Jstart_Aut,Start date of Autumn presence of TRange (if TSeasons = 2),Julian,,,,,16,,
-Jend_Aut,End date of Autumn presence of Trange,Julian,,,,,17,,
-PV_JM,"Proportion of lake volume where TRange exists on day JM (i.e., midsummer peak) ",%,,,,,18,,
-PV_mean,Mean proportion of lake volume where Trange exists for days when TRange is present,%,,,,,19,,
-PV_sd,Standard deviation of PV when TRange is present,%,,,,,20,,
-PV_max,Maximum value of PV  when TRange is present,%,,,,,21,,
-PV_min,Minimum value of PV  when TRange is present,%,,,,,22,,
-PV_year,Proportion of lake volume where TRange exists for entire year (= PD_year*PV_mean),%,,,,,23,,
-PA_JM,"Proportion of lake area where TRange exists on day JM (i.e., midsummer peak) ",%,,,,,24,,
-PA_mean,Mean proportion of lake area where Trange exists for days when TRange is present,%,,,,,25,,
-PA_sd,Standard deviation of PA when TRange is present,%,,,,,26,,
-PA_max,Maximum value of PA when TRange is present,%,,,,,27,,
-PA_min,Minimum value of PA when TRange is present,%,,,,,28,,
-PA_year,Proportion of year-area integral when TRange is present (= PD_year*PA_mean),%,,,,,29,,
+Variable,Description,Units,       1_Lake,       2_Climate,       3_Model_Inputs,       4_STM_Parameters,        5_ThermalSpace
+FMZ,Fishery Management Zone (optional),,1,,,1,1
+Group,User-defined (optional),,2,,,2,2
+Wby_Lid,Waterbody Location ID (Unique identifier based on Zone Northing Easting),,3,1,1,3,3
+Lake_Name,Lake name,,4,,,4,4
+Latitude,Laltitude of lake centroid,degrees,5,,,5,
+Longitude,Longitude of lake centroid,degrees,6,,,6,
+Elevation,Elevation above sea level,m,7,,,7,
+Area_ha,Lake area,hectares,8,,,8,5
+Shoreline,Shoreline perimeter,km,9,,,9,
+Depth_Max,Maximum lake depth,m,10,,,10,6
+Depth_Mn,Mean lake depth,m,11,,,11,7
+Secchi,Secchi depth,m,12,,,12,
+DOC,Dissolved organic carbon concentration,mg/l,13,,,13,
+Period,Period for which climate norms are given,,,2,2,14,8
+Tjan,Mean air temperature in January for specified Period,°C,,3,,,
+Tfeb,Mean air temperature in February for specified Period,°C,,4,,,
+Tmar,Mean air temperature in March for specified Period,°C,,5,3,,
+Tapr,Mean air temperature in April for specified Period,°C,,6,,,
+Tmay,Mean air temperature in May for specified Period,°C,,7,4,,
+Tjun,Mean air temperature in June for specified Period,°C,,8,5,,
+Tjul,Mean air temperature in July for specified Period,°C,,9,6,,
+Taug,Mean air temperature in August for specified Period,°C,,10,7,,
+Tsep,Mean air temperature in September for specified Period,°C,,11,8,,
+Toct,Mean air temperature in October for specified Period,°C,,12,,,
+Tnov,Mean air temperature in November for specified Period,°C,,13,,,
+Tdec,Mean air temperature in December for specified Period,°C,,14,,,
+Tann,Mean annual air temperature for specified Period,°C,,15,,,
+Paug,Mean daily precipitation in August for specified Period,mm,,16,9,,
+Tjja,"Mean air temperature in June, July and August for specified Period",°C,,,10,,
+Tson,"Mean air temperature in September, October and November for specified Period",°C,,,11,,
+J_Spr0,Spring date when 30-day smoothed air temperature rose to 0°C  (Julian day),Julian,,,12,,
+J_Aut0,Autumn date when 30-day smoothed air temperature dropped to 0°C  (Julian day),Julian,,,13,,
+T_Aut0,Mean air temperature (°C) for the 3-month Autumn period when the central month contains J_Aut0,°C,,,14,,
+Ang_Spr0,Angular elevation (degrees) of the sun above the horizon at noon on J_Spr0,degrees,,,15,,
+IceBU,Ice cover break up date,Julian,,,16,,
+TX,STM parameter maximum surface temperature on JM,°C,,,,15,
+TN,STM parameter hypolimnetic temperature at onset of stratification JS,°C,,,,16,
+JS,STM parameter day of onset of stratification,Julian,,,,17,
+JM,STM parameter day of peak surface temperature,Julian,,,,18,
+JE,STM parameter day of end of stratification,Julian,,,,19,
+ZTH,"STM parameter thermocline depth on JM (If ZJ=0, ZTH=ZM)",m,,,,20,
+ZM,STM parameter maximum thermocline depth,m,,,,21,
+ZJ,STM parameter number of days after JS when ZTH attains ZM/2,days,,,,22,
+SP,STM parameter steepness of transition from epi- to hypo-limnion,,,,,23,
+IceBU,Ice breakup completion date (Ice free date measured relative to start of year when freeze occurred),Julian,,,,24,
+IceFU,Ice freezeup completion date (date of first complete ice cover),Julian,,,,25,
+Icefree,Duration of icefree (open water) period,days,,,,26,
+DataGood,If TRUE then all required parameters have assigned values and thermopic stats computed,,,,,27,
+LakeNumber,Computed Lake Number based on STM parameters on JM,,,,,28,
+Stratified,If TRUE then lake is thermally stratified  (based on LakeNumber >= 1),logical,,,,29,9
+Do_Space,If TRUE then calculate themal habitat space (volume and area),logical,,,,30,
+Do_ThermoPic,If TRUE then produce ThermoPic plot,logical,,,,31,
+TRange,"Temperature range for estimation of thermal area and volume (e.g.,  T1416 for range = 14-16 C)",,,,,,10
+PD_year,Proportion of days in year when TRange is present,,,,,,11
+TSeasons,"Number of seasons when TRange is present 0, 1 or 2",,,,,,13
+PD_season1,"For unstratified lakes (i.e., TSeasons=2), proportion of days when TRange is present in the Spring season relative to Spring and Fall; for stratified lakes (i.e., TSeasons=1), PD_season1 = 1.0",,,,,,12
+Jstart_Spr,Start date of Spring presence of TRange ,Julian,,,,,14
+Jend_Spr,End date of Spring presence of TRange (if TSeasons = 2),Julian,,,,,15
+Jstart_Aut,Start date of Autumn presence of TRange (if TSeasons = 2),Julian,,,,,16
+Jend_Aut,End date of Autumn presence of Trange,Julian,,,,,17
+PV_JM,"Proportion of lake volume where TRange exists on day JM (i.e., midsummer peak) ",%,,,,,18
+PV_mean,Mean proportion of lake volume where Trange exists for days when TRange is present,%,,,,,19
+PV_sd,Standard deviation of PV when TRange is present,%,,,,,20
+PV_max,Maximum value of PV  when TRange is present,%,,,,,21
+PV_min,Minimum value of PV  when TRange is present,%,,,,,22
+PV_year,Proportion of lake volume where TRange exists for entire year (= PD_year*PV_mean),%,,,,,23
+PA_JM,"Proportion of lake area where TRange exists on day JM (i.e., midsummer peak) ",%,,,,,24
+PA_mean,Mean proportion of lake area where Trange exists for days when TRange is present,%,,,,,25
+PA_sd,Standard deviation of PA when TRange is present,%,,,,,26
+PA_max,Maximum value of PA when TRange is present,%,,,,,27
+PA_min,Minimum value of PA when TRange is present,%,,,,,28
+PA_year,Proportion of year-area integral when TRange is present (= PD_year*PA_mean),%,,,,,29

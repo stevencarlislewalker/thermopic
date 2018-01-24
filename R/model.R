@@ -20,10 +20,10 @@
 #' @importFrom rLakeAnalyzer lake.number
 thermopic_model = function(
   path, laked, sited, 
-  sited_output_file = 'sited.csv', 
-  lakep_output_file = 'lakep.csv', 
-  siteo_output_file = 'siteo.csv', 
-  STM_output_file = 'STM.csv',
+  sited_output_file = "tmp_ClimMetrics.csv", 
+  lakep_output_file = "3_Model_Inputs.csv", 
+  siteo_output_file = "tmp_IceClimMetrics.csv", 
+  STM_output_file = "4_STM_Parameters.csv",
   year_fix = 2010) {
   
   path = file.path(path)
