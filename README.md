@@ -61,7 +61,7 @@ fitted_thermopic_model = thermopic_model(
 )
 ```
 
-And finally create the report as well as the thermopic images themselves.  For speed we restrict the number of lakes to process to `5`.
+And create the report as well as the thermopic images themselves.  For speed we restrict the number of lakes to process to `5`.
 
 ```r
 thermopic_report_data = thermopic_report(
