@@ -404,12 +404,13 @@ thermopic_report = function(
   HdSpSum.Accum$YVol <- round(HdSpSum.Accum$WinV*HdSpSum.Accum$Vmean,digits=2)
   HdSpSum.Accum$YArea <- round(HdSpSum.Accum$WinV*HdSpSum.Accum$Amean,digits=2)
   
-  #Rename Thermal Habitat Variables
-  habnew <- data.frame(PD_year=c(0),PD_icefree=NA,TSeasons=c(0),Jstart_Spr=NA,Jend_Spr=NA,Jstart_Aut=NA,Jend_Aut=NA,PV_JM=c(0),PV_mean=c(0),PV_sd=NA,PV_min=NA,PV_max=NA,PV_year=c(0),PA_JM=c(0),PA_mean=c(0),PA_sd=NA,PA_min=NA,PA_max=NA,PA_year=c(0))
+  # Rename Thermal Habitat Variables
+  habnew <- data.frame(PD_year=c(0),TSeasons=c(0),PD_season1=NA,Jstart_Spr=NA,Jend_Spr=NA,Jstart_Aut=NA,Jend_Aut=NA,PV_JM=c(0),PV_mean=c(0),PV_sd=NA,PV_min=NA,PV_max=NA,PV_year=c(0),PA_JM=c(0),PA_mean=c(0),PA_sd=NA,PA_min=NA,PA_max=NA,PA_year=c(0))
   habitat <- data.frame(HdSpSum.Accum[,c(1:9)],habnew)
   habitat$PD_year <- HdSpSum.Accum$WinV
-  habitat$PD_icefree <- HdSpSum.Accum$PSpr
   habitat$TSeasons <- HdSpSum.Accum$Seas
+  # Rename PD_icefree to PD_season1 (PD_icefree was wrong interpretation)
+  habitat$PD_season1 <- HdSpSum.Accum$PSpr
   habitat$Jstart_Spr <- HdSpSum.Accum$WinSt
   habitat$Jend_Spr <- HdSpSum.Accum$SprEn
   habitat$Jstart_Aut <- HdSpSum.Accum$AutSt
@@ -427,6 +428,7 @@ thermopic_report = function(
   habitat$PA_max <- HdSpSum.Accum$Amax
   habitat$PA_year<- HdSpSum.Accum$YArea
   # head(habitat)
+  
   
   # Clean up output
   #spaced$DOC <- round(spaced$DOC,digits=1)

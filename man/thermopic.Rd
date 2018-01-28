@@ -20,4 +20,3 @@ with a special structure
 
 TODO: describe how to use the package with reference to the original pdf document
 }
-

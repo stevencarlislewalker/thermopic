@@ -16,4 +16,3 @@ get_thermopic_data(data, path = NULL, in_or_out = c("DataIn", "DataOut"))
 \description{
 Get data from a thermopic project
 }
-

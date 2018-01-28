@@ -20,4 +20,3 @@ through Jan-Dec (Y) to Jan(Y+1)}
 (Model) Interpolate Julian dates for reference temperatures 
 in spring and fall from monthly mean temperatures.
 }
-

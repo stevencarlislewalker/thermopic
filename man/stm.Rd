@@ -30,4 +30,3 @@ stm(tx, tn, js, jm, je, zm, zj, sp, jd, z)
 \description{
 (Model and Report) Find the water temperature at a given depth on a given day in a lake
 }
-

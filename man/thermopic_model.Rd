@@ -4,9 +4,10 @@
 \alias{thermopic_model}
 \title{Fit Thermopic Model}
 \usage{
-thermopic_model(path, laked, sited, sited_output_file = "sited.csv",
-  lakep_output_file = "lakep.csv", siteo_output_file = "siteo.csv",
-  STM_output_file = "STM.csv", year_fix = 2010)
+thermopic_model(path, laked, sited, sited_output_file = "tmp_ClimMetrics.csv",
+  lakep_output_file = "3_Model_Inputs.csv",
+  siteo_output_file = "tmp_IceClimMetrics.csv",
+  STM_output_file = "4_STM_Parameters.csv", year_fix = 2010)
 }
 \arguments{
 \item{path}{Character string containing the path to the root of a thermopic project}
@@ -31,4 +32,3 @@ s3 object of class thermopic_model, containing output dataframes
 \description{
 Fit Thermopic Model
 }
-

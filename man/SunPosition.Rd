@@ -37,4 +37,3 @@ http://stackoverflow.com/questions/257717/position-of-the-sun-given-time-of-day-
 http://www.esrl.noaa.gov/gmd/grad/solcalc/
 Checked against NOAA on-line calculator
 }
-

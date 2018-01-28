@@ -12,8 +12,6 @@ Depends:
     R (>= 3.0.0)
 License: GPL-3 | file LICENSE
 Encoding: UTF-8
-Suggests: R.rsp
-VignetteBuilder: R.rsp
 LazyData: true
 Imports:
     stats,
@@ -21,4 +19,4 @@ Imports:
     chron,
     rLakeAnalyzer,
     RColorBrewer
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

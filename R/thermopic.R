@@ -14,4 +14,5 @@
 #' TODO: describe how to use the package with reference to the original pdf document
 #' @docType package
 #' @name thermopic
+#' @importFrom utils write.csv
 NULL

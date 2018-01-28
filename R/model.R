@@ -37,7 +37,11 @@ thermopic_model = function(
   Nsites <- length(sited$Period)
 
   # Estimate Shoreline
-  laked$elnShoreline <- 1.32844+0.67375*log(laked$Area_ha/100)+0.75298*log(laked$Depth_Max)-0.72932*log(laked$Depth_Mn)+0.3717^2/2
+  # OLD FORMULA: laked$elnShoreline <- 1.32844+0.67375*log(laked$Area_ha/100)+0.75298*log(laked$Depth_Max)-0.72932*log(laked$Depth_Mn)+0.3717^2/2
+  # NEW FORMuLA (next line) based on 721 BsM lakes (in Ontario)
+  laked$elnShoreline <- 1.39494+0.69596*log(laked$Area_ha/100)+0.65994*log(laked$Depth_Max)-0.68779*log(laked$Depth_Mn)+0.3772^2/2
+  # Alternative FORMuLA (next line) based on 9283 AHI lakes (in Ontario)
+  #laked$elnShoreline <- 1.6969+0.67061*log(laked$Area_ha/100)+0.38243*log(laked$Depth_Max)-0.34590*log(laked$Depth_Mn)+0.3310^2/2
   laked$eShoreline <- exp(laked$elnShoreline)
   laked$ShorelineFlag <- "Yes"
   laked$ShorelineFlag <- ifelse(is.na(laked$Shoreline),"No",laked$ShorelineFlag)
@@ -46,8 +50,13 @@ thermopic_model = function(
   
   # Estimate Secchi
   laked$Secchi <- as.numeric(laked$Secchi)
-  laked$elnSecchi <- 1.822791-0.166579*laked$DOC+0.003760*laked$DOC^2+0.186572*log(laked$Depth_Mn)+0.3324^2/2
-  laked$elnSecchi <- ifelse(is.na(laked$DOC),(-77.133986-0.039255*log(laked$Area_ha/100)+3.3899*laked$Latitude-0.036865*laked$Latitude^2+0.370819*log(laked$Depth_Mn)+0.4032^2/2),(1.822791-0.166579*laked$DOC+0.003760*laked$DOC^2+0.186572*log(laked$Depth_Mn)+0.4032^2/2))
+  # OLD FORMULAE in next 2 lines
+  # laked$elnSecchi <- 1.822791-0.166579*laked$DOC+0.003760*laked$DOC^2+0.186572*log(laked$Depth_Mn)+0.3324^2/2
+  # laked$elnSecchi <- ifelse(is.na(laked$DOC),(-77.133986-0.039255*log(laked$Area_ha/100)+3.3899*laked$Latitude-0.036865*laked$Latitude^2+0.370819*log(laked$Depth_Mn)+0.4032^2/2),(1.822791-0.166579*laked$DOC+0.003760*laked$DOC^2+0.186572*log(laked$Depth_Mn)+0.4032^2/2))
+  # NEW FORMULAE in next 2 lines (based on 695 bsM lakes with DOC and 717 BsM lakes without DOC)
+  laked$elnSecchi_DOC   <- 2.19226-0.720734*log(laked$DOC)+0.179978*log(laked$Depth_Max)+0.3617^2/2
+  laked$elnSecchi_noDOC <- 0.277336-0.08618*log(laked$Area_ha/100)+0.11680*log(laked$Depth_Mn)+0.36719*log(laked$Depth_Max)+0.4582^2/2
+  laked$elnSecchi <- ifelse(is.na(laked$DOC),laked$elnSecchi_noDOC,laked$elnSecchi_DOC)
   laked$eSecchi <- exp(laked$elnSecchi)
   laked$SecchiFlag <- "Yes"
   laked$SecchiFlag <- ifelse(is.na(laked$Secchi),"No",laked$SecchiFlag)
@@ -55,7 +64,10 @@ thermopic_model = function(
   laked$Secchi <- round(laked$Secchi,digits=2)
   
   # Estimate DOC
-  laked$eDOC <- 2.0409-0.3009*log(laked$Depth_Mn)+18.7373*1/laked$Secchi-8.2407*(1/laked$Secchi)^2
+  # OLD FORMULA in next line - new formula proposed by NPL avoids negative DOC when Secchi is small (<0.5 m)
+  # laked$eDOC <- 2.0409-0.3009*log(laked$Depth_Mn)+18.7373*1/laked$Secchi-8.2407*(1/laked$Secchi)^2
+  # NEW FORMULA in next line (avoids negative DOC)
+  laked$eDOC <- exp(2.7215 - 0.1276*log(laked$Secchi) - 0.1469*laked$Secchi - 0.0734*log(laked$Depth_Max)+0.3070^2)
   laked$DOCFlag <- "Yes"
   laked$DOCFlag <- ifelse(is.na(laked$DOC),"No",laked$DOCFlag)
   laked$DOC <- ifelse(laked$DOCFlag == "No",laked$eDOC,laked$DOC)

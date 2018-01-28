@@ -18,4 +18,3 @@ FindArea(area, zmn, zmx, ztarget)
 \description{
 (Model and Report) Find the area between two depths in a lake
 }
-

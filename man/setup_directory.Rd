@@ -31,4 +31,3 @@ If overwrite_output is TRUE, than overwrite is ignored.}
 \description{
 Setup a directory to be used with the thermopic software
 }
-
