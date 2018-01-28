@@ -4,28 +4,28 @@
 \alias{thermopic_report}
 \title{Thermopic Report}
 \usage{
-thermopic_report(path, spaced, Options, TP_plots, TP_interval, TP_format,
-  TP_folder, Nlakes_test, habitat_output_file = "5_ThermalSpace4D.csv",
+thermopic_report(path, spaced, habitat_output_file = "5_ThermalSpace4D.csv",
+  Options, TP_plots, TP_interval, TP_format, TP_folder, Nlakes_test,
   show_progress_bar = FALSE)
 }
 \arguments{
 \item{path}{Character string containing the path to the root of a thermopic project}
 
-\item{spaced}{TODO}
+\item{spaced}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading. This data set can be found in the \code{STM} element of the output of \code{\link{thermopic_model}}.}
 
-\item{Options}{TODO}
+\item{habitat_output_file}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{5_ThermoSpace4D} sub-heading.}
 
-\item{TP_plots}{TODO}
+\item{Options}{An optional \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{0_User_Options.csv} sub-heading. It is typically easier to specify these options via the following arguments: \code{TP_plots}, \code{TP_interval}, \code{TP_format}, \code{TP_folder}, \code{Nlakes_test}.}
 
-\item{TP_interval}{TODO}
+\item{TP_plots}{(Yes or No) indicates whether ThermoPic plots will be produced when running P2_Report. Production of plots for individual lakes can also be controlled by editing the ‘4_STM_Parameters’file in DataOut (after running P2_Model). By default, “Do_ThermoPic = TRUE” for all records in ‘4_STM_Parameters’. Setting “Do_ThermoPic” = FALSE will prevent plot production for that case.}
 
-\item{TP_format}{TODO}
+\item{TP_interval}{Specifies the temperature interval used when calculating thermal space. The Default value is 4 C, which reports results for the following temperature ranges: 8-12, 12-16, 16-20, 20-24, 24-30. Acceptable values of TP_Interval are 1, 2, 3 and 4. ThermoPic plotting works best when TP_Interval = 3 or 4, because the plot routine has been designed to show the first 6 temperature bands, starting from 8 C When TP_Interval = 1 or 2, the maximum temperatures shown are 14 and 20, respectively. These plots are not very useful and can be suppressed by setting TP_plots = “No”. The setting of “TP_plots” has no effect on the production of the report file (e.g. 5_ThermalSpace_xD.csv). The program will always produce a report with thermal habitat statistics. The default TP_Interval (4 C) produces a file whose name ends with the suffix “4D”. If other intervals are chosen, this suffix changes accordingly (e.g., “3D” implies a 3 degree temperature interval).}
 
-\item{TP_folder}{TODO}
+\item{TP_format}{Specifies the file type for ThermoPic graphs. Acceptable values are ‘JPEG’ or ‘TIFF’.}
 
-\item{Nlakes_test}{TODO}
+\item{TP_folder}{Specifies the sub-folder where ThermPic graphs will be stored.}
 
-\item{habitat_output_file}{TODO}
+\item{Nlakes_test}{Allows users to test the P2_Report code by processing a small number of lakes, before running the program on all lakes. If Nlakes_test = 0, all lakes in the ‘1_Lake.csv’ will be processed. Otherwise, the value of Nlakes_test specifies how many lakes will be processed.}
 
 \item{show_progress_bar}{Should progress bar be displayed to show 
 percentage of lakes analyzed?  Note that this should be FALSE unless

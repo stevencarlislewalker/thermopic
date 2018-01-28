@@ -1,13 +1,17 @@
 #' Fit Thermopic Model
 #' 
 #' @param path Character string containing the path to the root of a thermopic project
-#' @param laked TODO
-#' @param sited TODO
-#' @param sited_output_file TODO
-#' @param lakep_output_file TODO
-#' @param siteo_output_file TODO
-#' @param STM_output_file TODO
-#' @param year_fix TODO
+#' @param laked A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{1_Lake.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.
+#' @param sited A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{2_Climate.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.
+#' @param lakep_output_file The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{3_Model_Inputs.csv} sub-heading.
+#' @param STM_output_file The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading.
+#' @param sited_output_file The name of an output temp file used mainly for debugging
+#' @param siteo_output_file The name of an output temp file used mainly for debugging
+#' @param year_fix Integer giving a calender year for simplifing the code by
+#' assigning "year_fix" for calculating Day of Year and Solar elevation/angle.
+#' Exact year not needed because because program works with Temperature norms
+#' for Specified Period. Solar angle for a given day of year varies on 4 year
+#' cycle, but variation is very small.
 #' @return s3 object of class thermopic_model, containing output dataframes
 #' @export
 #' @importFrom utils head
@@ -20,10 +24,10 @@
 #' @importFrom rLakeAnalyzer lake.number
 thermopic_model = function(
   path, laked, sited, 
-  sited_output_file = "tmp_ClimMetrics.csv", 
   lakep_output_file = "3_Model_Inputs.csv", 
-  siteo_output_file = "tmp_IceClimMetrics.csv", 
   STM_output_file = "4_STM_Parameters.csv",
+  sited_output_file = "tmp_ClimMetrics.csv", 
+  siteo_output_file = "tmp_IceClimMetrics.csv",
   year_fix = 2010) {
   
   path = file.path(path)
