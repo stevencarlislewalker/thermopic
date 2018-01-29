@@ -9,6 +9,11 @@ Installation is easiest from an `R` commandline using the `devtools` package.
 devtools::install_github('stevencarlislewalker/thermopic')
 ```
 
+It might be necessary to preceed this first step by installing `devtools`.
+```{r, eval=FALSE}
+install.packages('devtools')
+```
+
 Once the package is installed, it may be loaded using the `library` function.
 ```{r}
 library(thermopic)

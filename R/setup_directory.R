@@ -26,9 +26,11 @@ setup_directory = function(
   DataIn = file.path(path, 'DataIn')
   DataOut = file.path(path, 'DataOut')
   ThermoPics = file.path(path, 'DataOut', 'ThermoPics')
+  Guide = system.file('doc/ThermoPic_Guide_v3b.pdf', package = 'thermopic')
+  TechReport = system.file('doc/ThermoPic_TechReport_v3b.pdf', package = 'thermopic')
   
   create_structure = function() {
-    unlink(path, recursive = TRUE)  # remove any existing directory
+    unlink(path, recursive = TRUE) # remove any existing directory
     dir.create(path)
     dir.create(DataIn)
     dir.create(DataOut)
@@ -37,6 +39,8 @@ setup_directory = function(
     file.copy(UserOptions, DataIn)
     file.copy(Lake, DataIn)
     file.copy(Climate, DataIn)
+    file.copy(Guide, path)
+    file.copy(TechReport, path)
   }
   
   overwrite_output_structure = function() {
