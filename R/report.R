@@ -39,7 +39,7 @@ thermopic_report = function(
   habitat_output_file = file.path(path, 'DataOut', habitat_output_file)
   
   #==================================================================
-  #Process User Options
+  # Process User Options
   #------------------------------------------------------------------
   
   if(missing(Nlakes_test)) Nlakes_test = as.character(Options$User[5])
