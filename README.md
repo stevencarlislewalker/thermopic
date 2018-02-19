@@ -119,4 +119,4 @@ Here we see the resulting outputs including the images in `jpeg` format files.
 
 
 
-For a more detailed introduction see this tutorial.
+For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorical.md).

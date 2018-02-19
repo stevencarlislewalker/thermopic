@@ -79,4 +79,4 @@ print_directory_tree(root)
 unlink(root)
 ```
 
-For a more detailed introduction see this tutorial.
+For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorical.md).
