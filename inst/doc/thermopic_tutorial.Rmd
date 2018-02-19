@@ -1,0 +1,41 @@
+# Tutorial for using the `thermopic` package
+
+```{r}
+library(thermopic)
+```
+
+## Setting up the project directory structure -- `setup_directory`
+
+The `setup_directory` function takes two specially-formatted data frames as arguments.  The first describes the geography, morphometry, and water quality of lakes.  The second describes the climate of each lake over a particular time period.  There are examples of these files included in the `thermopic` package.  To obtain the location of these files within your installation of `thermopic`, one may use the `system.file` function.
+```{r}
+lake_csv = system.file('extdata/1_Lake.csv', package = 'thermopic')
+climate_csv = system.file('extdata/2_Climate.csv', package = 'thermopic')
+print(lake_csv)
+print(climate_csv)
+```
+
+
+Here we read these example data frames and print out the first six records of each.
+```{r}
+lake_example = read.csv(lake_csv)
+climate_example = read.csv(climate_csv)
+head(lake_example)
+head(climate_example)
+```
+
+The `setup_directory` function is used to produce the required directory structure for a thermopic project, and inject the lake and climate data into the appropriate place within this structure.
+```{r}
+setup_directory(path = '../misc/tutorial_project', 
+                Lake = lake_csv,
+                Climate = climate_csv,
+                overwrite = TRUE)
+print_directory_tree('../misc/tutorial_project')
+```
+
+## Fitting the seasonal temperature model -- `thermopic_model`
+
+```{r}
+thermopic_model(path = '../misc/tutorial_project')
+```
+
+## Visualizing thermal habitat in lakes -- `thermopic_report`

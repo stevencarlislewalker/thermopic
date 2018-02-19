@@ -1,6 +1,11 @@
-# thermopic
+---
+output:
+  html_document: default
+  word_document: default
+---
+# Predicting and Visualizing Thermal Habitat: `thermopic`
 
-The `thermopic` software provides functionality for predicting and visualizing the seasonal available of thermal habitat in lakes.
+The `thermopic` R package provides functionality for predicting and visualizing the seasonal availability of thermal habitat in lakes.
 
 ## Installation
 
@@ -21,9 +26,9 @@ library(thermopic)
 
 ## Setting up the directory structure
 
-The `thermopic` package runs within a project directory. Here we create a temporary directory for this tutorial using standard `R` tools.
+The `thermopic` package runs within a project directory. Here we create a temporary directory for this tutorial using the `temporary_thermopic_directory` function.
 ```{r}
-root = tempdir()
+root = temporary_thermopic_directory()
 ```
 
 In this case the temporary directory is located here.
@@ -36,9 +41,9 @@ We now use `thermopic`'s `setup_directory` function to create the required direc
 setup_directory(root, overwrite = TRUE)
 ```
 
-We may inspect this structure using `R`s `list.files` function.
+We may inspect this structure using `thermopic`s `print_directory_tree` utility function.
 ```{r}
-list.files(root, recursive = TRUE, include.dirs = TRUE)
+print_directory_tree(root)
 ```
 
 ## Running the model and report functions
@@ -65,11 +70,13 @@ thermopic_report_data = thermopic_report(
 
 ## Inspecting the updated directory structure
 
-Here we see the resulting outputs including the images in `jpeg` format files, again using `list.files`.
+Here we see the resulting outputs including the images in `jpeg` format files.
 ```{r, echo=FALSE}
-list.files(root, recursive = TRUE)
+print_directory_tree(root)
 ```
 
 ```{r, echo=FALSE}
 unlink(root)
 ```
+
+For a more detailed introduction see this tutorial.

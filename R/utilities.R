@@ -28,3 +28,27 @@ get_thermopic_data = function(data, path = NULL, in_or_out = c('DataIn', 'DataOu
   
   return(data)
 }
+
+#' Print directory tree
+#' 
+#' @param root directory to depict visually
+#' @importFrom data.tree as.Node
+#' @importFrom plyr rbind.fill
+#' @export
+print_directory_tree = function(root) {
+  path = list.files(root, recursive = TRUE, full.names = FALSE, include.dirs = TRUE)
+  path = file.path(rev(strsplit(root, '/')[[1]])[1], path)
+  x <- lapply(strsplit(path, "/"), function(z) as.data.frame(t(z)))
+  x <- rbind.fill(x)
+  x$pathString <- apply(x, 1, function(x) paste(trimws(na.omit(x)), collapse="/"))
+  x = as.Node(x)
+  cat(noquote(as.data.frame(x)$levelName), sep = '\n')
+  invisible(x)
+}
+
+#' Temporary thermopic directory
+#' 
+#' @export
+temporary_thermopic_directory = function() {
+  return(file.path(gsub('\\\\', '/', tempdir()), 'thermopic_project'))
+}
