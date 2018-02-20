@@ -1,8 +1,3 @@
----
-output:
-  html_document: default
-  word_document: default
----
 # Predicting and Visualizing Thermal Habitat: `thermopic`
 
 The `thermopic` R package provides functionality for predicting and visualizing the seasonal availability of thermal habitat in lakes.
