@@ -24,51 +24,41 @@ Once the package is installed, it may be loaded using the `library` function.
 library(thermopic)
 ```
 
-## Setting up the directory structure
+## Quick tour
 
-The `thermopic` package runs within a project directory. Here we create a temporary directory for this tutorial using the `temporary_thermopic_directory` function.
+The `thermopic` package runs within a project directory, which we create using the optional `temporary_thermopic_directory` function.
 ```{r}
 root = temporary_thermopic_directory()
 ```
 
-In this case the temporary directory is located here.
-```{r, echo=FALSE}
-root
-```
-
-We now use `thermopic`'s `setup_directory` function to create the required directory structure for our project.  This function allows some flexibility in how input data are specified.  Here we use the defaults, which extract sample data contained within the package.
+We now use `thermopic`'s `setup_directory` function to create the required directory structure for our project. For this quick tour we use sample input data contained within the package, which is the default behaviour of `setup_directory`.
 ```{r}
 setup_directory(root, overwrite = TRUE)
 ```
 
-We may inspect this structure using `thermopic`s `print_directory_tree` utility function.
+To inspect the resulting directory structure one may use `thermopic`s `print_directory_tree` function.
 ```{r}
 print_directory_tree(root)
 ```
 
-## Running the model and report functions
-
-Now that the structure is in place, one may fit the thermopic model.
+Now that the structure is in place one may fit the thermopic model.
 ```{r}
 fitted_thermopic_model = thermopic_model(
   path = root,
-  laked = '1_lake.csv',
-  sited = '2_Climate.csv'
+  Lake = '1_Lake.csv',
+  Climate = '2_Climate.csv'
 )
 ```
 
-And create the report as well as the thermopic images themselves.  For speed we restrict the number of lakes to process to `5`.
+And create the report as well as the thermopic images themselves.
 ```{r}
 thermopic_report_data = thermopic_report(
   path = root,
-  spaced = fitted_thermopic_model$STM,
-  Options = '0_User_Options.csv',
+  STM_Parameters = '4_STM_Parameters.csv',
   Nlakes_test = 5,
   show_progress_bar = FALSE
 )
 ```
-
-## Inspecting the updated directory structure
 
 Here we see the resulting outputs including the images in `jpeg` format files.
 ```{r, echo=FALSE}
@@ -78,5 +68,7 @@ print_directory_tree(root)
 ```{r, echo=FALSE}
 unlink(root)
 ```
+
+## Further information
 
 For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorical.md).
