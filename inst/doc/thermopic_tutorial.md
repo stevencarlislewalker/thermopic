@@ -1,26 +1,4 @@
----
-title: "Tutorial for thermopic"
-author: "Steve Walker"
-date: "2020-03-01"
-output:
-  word_document:
-    toc: yes
-    toc_depth: '2'
-  pdf_document:
-    toc: yes
-    toc_depth: 2
-  html_document:
-    df_print: kable
-    keep_md: yes
-    self_contained: yes
-    theme: cerulean
-    toc: yes
-    toc_depth: 2
----
-
 # Tutorial for using the `thermopic` package
-
-
 
 ## Introduction
 
