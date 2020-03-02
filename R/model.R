@@ -268,11 +268,12 @@ thermopic_model = function(
   # check log10 in next 2 lines
   STM$TX <- round(4.81017 -0.51763*log10(STM$Area_km)^2 +2.4337*log10(STM$Elevation) +0.25207*STM$Tann +0.55343*STM$Tjul +0.14833*STM$Taug, digits = 2)
   STM$TN <- round(11.9389 +1.07915*log10(STM$Area_km) +2.0226*log10(STM$Depth_Mn) -4.68475*log10(STM$Depth_Max) -0.20951*STM$Secchi +0.09426*STM$Tmar, digits=2)
+  # Changed JS equation, Tann coefficient sign to negative
   for (i in 1:nrow(STM)) {
     if (STM$Area_ha[i] > 800) {
-      STM$JS[i] <- round(160 +5.14*STM$Tann[i] +5.74*log(STM$Area_km[i]/STM$Depth_Mn[i]) - 27, digits = 1) 
+      STM$JS[i] <- round(160 - 5.14*STM$Tann[i] +5.74*log(STM$Area_km[i]/STM$Depth_Mn[i]) - 27, digits = 1) 
     } else {
-      STM$JS[i] <- round((160 +5.14*STM$Tann[i] +5.74*log(STM$Area_km[i]/STM$Depth_Mn[i]))/2 +(91.24 -5.87*STM$Tmay[i] -3.35*STM$DOC[i] +STM$Area_km[i] +STM$IceBU[i])/2 - 27, digits = 1) 
+      STM$JS[i] <- round((160 - 5.14*STM$Tann[i] +5.74*log(STM$Area_km[i]/STM$Depth_Mn[i]))/2 +(91.24 -5.87*STM$Tmay[i] -3.35*STM$DOC[i] +STM$Area_km[i] +STM$IceBU[i])/2 - 27, digits = 1) 
     }
   }
   
