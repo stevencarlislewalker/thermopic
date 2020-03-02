@@ -1,6 +1,6 @@
 Package: thermopic
 Title: Predicting and Visualizing the Seasonal Availability of Thermal Habitat in Lakes
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Authors@R: 
   c(person("Ken", "Minns", email = "", role = c("aut")),
     person("Simon", "Fung", email = "", role = c("aut")),
@@ -20,5 +20,6 @@ Imports:
     graphics,
     chron,
     rLakeAnalyzer,
-    RColorBrewer
-RoxygenNote: 6.0.1
+    RColorBrewer,
+    data.tree
+RoxygenNote: 6.1.1

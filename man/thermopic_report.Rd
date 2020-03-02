@@ -4,16 +4,17 @@
 \alias{thermopic_report}
 \title{Thermopic Report}
 \usage{
-thermopic_report(path, spaced, habitat_output_file = "5_ThermalSpace4D.csv",
-  Options, TP_plots, TP_interval, TP_format, TP_folder, Nlakes_test,
-  show_progress_bar = FALSE)
+thermopic_report(path, STM_Parameters,
+  ThermalSpace4D = "5_ThermalSpace4D.csv",
+  Options = "0_User_Options.csv", TP_plots, TP_interval, TP_format,
+  TP_folder, Nlakes_test, show_progress_bar = FALSE)
 }
 \arguments{
 \item{path}{Character string containing the path to the root of a thermopic project}
 
-\item{spaced}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading. This data set can be found in the \code{STM} element of the output of \code{\link{thermopic_model}}.}
+\item{STM_Parameters}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading. This data set can be found in the \code{STM} element of the output of \code{\link{thermopic_model}}.}
 
-\item{habitat_output_file}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{5_ThermoSpace4D} sub-heading.}
+\item{ThermalSpace4D}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{5_ThermoSpace4D} sub-heading.}
 
 \item{Options}{An optional \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{0_User_Options.csv} sub-heading. It is typically easier to specify these options via the following arguments: \code{TP_plots}, \code{TP_interval}, \code{TP_format}, \code{TP_folder}, \code{Nlakes_test}.}
 
@@ -30,6 +31,9 @@ thermopic_report(path, spaced, habitat_output_file = "5_ThermalSpace4D.csv",
 \item{show_progress_bar}{Should progress bar be displayed to show 
 percentage of lakes analyzed?  Note that this should be FALSE unless
 running in interactive mode at a console.}
+}
+\value{
+Data frame containing the \code{ThermalSpace4D} table described in section C5 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide}. This table contains estimates of thermal space (volume and area) for various temperature ranges.
 }
 \description{
 Thermopic Report

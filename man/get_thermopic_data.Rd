@@ -4,7 +4,8 @@
 \alias{get_thermopic_data}
 \title{Get data from a thermopic project}
 \usage{
-get_thermopic_data(data, path = NULL, in_or_out = c("DataIn", "DataOut"))
+get_thermopic_data(data, path = NULL, in_or_out = c("DataIn",
+  "DataOut"))
 }
 \arguments{
 \item{data}{Character (or factor) containing a path to a CSV, or a data frame}

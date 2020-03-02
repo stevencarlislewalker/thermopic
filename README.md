@@ -44,15 +44,15 @@ print_directory_tree(root)
 
 ```
 ## thermopic_project           
-##  ¦--DataIn                  
-##  ¦   ¦--0_User_Options.csv  
-##  ¦   ¦--1_Lake.csv          
-##  ¦   °--2_Climate.csv       
-##  ¦--DataOut                 
-##  ¦   °--ThermoPics          
-##  ¦--ThermoPic_Dictionary.csv
-##  ¦--ThermoPic_Guide.pdf     
-##  °--ThermoPic_TechReport.pdf
+##  Â¦--DataIn                  
+##  Â¦   Â¦--0_User_Options.csv  
+##  Â¦   Â¦--1_Lake.csv          
+##  Â¦   Â°--2_Climate.csv       
+##  Â¦--DataOut                 
+##  Â¦   Â°--ThermoPics          
+##  Â¦--ThermoPic_Dictionary.csv
+##  Â¦--ThermoPic_Guide.pdf     
+##  Â°--ThermoPic_TechReport.pdf
 ```
 
 Now that the structure is in place one may fit the thermopic model.
@@ -80,29 +80,29 @@ Here we see the resulting outputs including the images in `jpeg` format files.
 
 ```
 ## thermopic_project                                          
-##  ¦--DataIn                                                 
-##  ¦   ¦--0_User_Options.csv                                 
-##  ¦   ¦--1_Lake.csv                                         
-##  ¦   °--2_Climate.csv                                      
-##  ¦--DataOut                                                
-##  ¦   ¦--3_Model_Inputs.csv                                 
-##  ¦   ¦--4_STM_Parameters.csv                               
-##  ¦   ¦--5_ThermalSpace4D.csv                               
-##  ¦   ¦--ThermoPics                                         
-##  ¦   ¦   ¦--4_Wingiskus Lake_15-3543-56122_P2001-2010.jpeg 
-##  ¦   ¦   ¦--5_Cygnet Lake_15-3653-55394_P2001-2010.jpeg    
-##  ¦   ¦   ¦--5_Malachi Lake_15-3559-55281_P2001-2010.jpeg   
-##  ¦   ¦   ¦--5_South Scot Lake_15-3523-55336_P2001-2010.jpeg
-##  ¦   ¦   °--5_Whitefish Lake_15-3532-55170_P2001-2010.jpeg 
-##  ¦   ¦--tmp_ClimMetrics.csv                                
-##  ¦   °--tmp_IceClimMetrics.csv                             
-##  ¦--ThermoPic_Dictionary.csv                               
-##  ¦--ThermoPic_Guide.pdf                                    
-##  °--ThermoPic_TechReport.pdf
+##  Â¦--DataIn                                                 
+##  Â¦   Â¦--0_User_Options.csv                                 
+##  Â¦   Â¦--1_Lake.csv                                         
+##  Â¦   Â°--2_Climate.csv                                      
+##  Â¦--DataOut                                                
+##  Â¦   Â¦--3_Model_Inputs.csv                                 
+##  Â¦   Â¦--4_STM_Parameters.csv                               
+##  Â¦   Â¦--5_ThermalSpace4D.csv                               
+##  Â¦   Â¦--ThermoPics                                         
+##  Â¦   Â¦   Â¦--4_Wingiskus Lake_15-3543-56122_P2001-2010.jpeg 
+##  Â¦   Â¦   Â¦--5_Cygnet Lake_15-3653-55394_P2001-2010.jpeg    
+##  Â¦   Â¦   Â¦--5_Malachi Lake_15-3559-55281_P2001-2010.jpeg   
+##  Â¦   Â¦   Â¦--5_South Scot Lake_15-3523-55336_P2001-2010.jpeg
+##  Â¦   Â¦   Â°--5_Whitefish Lake_15-3532-55170_P2001-2010.jpeg 
+##  Â¦   Â¦--tmp_ClimMetrics.csv                                
+##  Â¦   Â°--tmp_IceClimMetrics.csv                             
+##  Â¦--ThermoPic_Dictionary.csv                               
+##  Â¦--ThermoPic_Guide.pdf                                    
+##  Â°--ThermoPic_TechReport.pdf
 ```
 
 
 
 ## Further information
 
-For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorical.md).
+For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorial.md).

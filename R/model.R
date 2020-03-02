@@ -1,18 +1,25 @@
 #' Fit Thermopic Model
 #' 
 #' @param path Character string containing the path to the root of a thermopic project
-#' @param laked A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{1_Lake.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.
-#' @param sited A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{2_Climate.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.
-#' @param lakep_output_file The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{3_Model_Inputs.csv} sub-heading.
-#' @param STM_output_file The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading.
-#' @param sited_output_file The name of an output temp file used mainly for debugging
-#' @param siteo_output_file The name of an output temp file used mainly for debugging
+#' @param Lake A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{1_Lake.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.
+#' @param Climate A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{2_Climate.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.
+#' @param Model_Inputs The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{3_Model_Inputs.csv} sub-heading. This file contains the inputs needed to calculate the STM parameters.  They include lake measurements, as well as climate and ice variables.
+#' @param STM_Parameters The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading.  This file contains estimates of the STM parameters which are used to predict temperature at depth throughout the icefree season.  These estimates are needed to calculate seasonal thermal habitat.  Editing of the columns \code{Do_Space} and \code{Do_ThermoPic} may be done to control output from \code{\link{thermopic_report}}
+#' @param tmp_ClimMetrics The name of an output temp file used mainly for debugging
+#' @param tmp_IceClimMetrics The name of an output temp file used mainly for debugging
 #' @param year_fix Integer giving a calender year for simplifing the code by
 #' assigning "year_fix" for calculating Day of Year and Solar elevation/angle.
 #' Exact year not needed because because program works with Temperature norms
 #' for Specified Period. Solar angle for a given day of year varies on 4 year
 #' cycle, but variation is very small.
-#' @return s3 object of class thermopic_model, containing output dataframes
+#' @return s3 object of class thermopic_model, containing the following output
+#' dataframes:
+#' \describe{
+#'   \item{tmp_ClimMetrics}{Modified climate table}
+#'   \item{tmp_IceClimMetrics}{Table of ice climate metrics}
+#'   \item{Model_Inputs}{Input variables needed to calculate the STM parameters}
+#'   \item{STM_Parameters}{Estimates of the STM parameters used to predict temperature at depth throughout the icefree season}
+#' }
 #' @export
 #' @importFrom utils head
 #' @importFrom chron month.day.year
@@ -23,20 +30,20 @@
 #' @importFrom rLakeAnalyzer uStar
 #' @importFrom rLakeAnalyzer lake.number
 thermopic_model = function(
-  path, laked, sited, 
-  lakep_output_file = "3_Model_Inputs.csv", 
-  STM_output_file = "4_STM_Parameters.csv",
-  sited_output_file = "tmp_ClimMetrics.csv", 
-  siteo_output_file = "tmp_IceClimMetrics.csv",
+  path, Lake, Climate, 
+  Model_Inputs = "3_Model_Inputs.csv", 
+  STM_Parameters = "4_STM_Parameters.csv",
+  tmp_ClimMetrics = "tmp_ClimMetrics.csv", 
+  tmp_IceClimMetrics = "tmp_IceClimMetrics.csv",
   year_fix = 2010) {
   
   path = file.path(path)
-  laked = get_thermopic_data(laked, path, 'DataIn')
-  sited = get_thermopic_data(sited, path, 'DataIn')
-  sited_output_file = file.path(path, 'DataOut', sited_output_file)
-  lakep_output_file = file.path(path, 'DataOut', lakep_output_file)
-  siteo_output_file = file.path(path, 'DataOut', siteo_output_file)
-  STM_output_file = file.path(path, 'DataOut', STM_output_file)
+  laked = get_thermopic_data(Lake, path, 'DataIn')
+  sited = get_thermopic_data(Climate, path, 'DataIn')
+  sited_output_file = file.path(path, 'DataOut', tmp_ClimMetrics)
+  lakep_output_file = file.path(path, 'DataOut', Model_Inputs)
+  siteo_output_file = file.path(path, 'DataOut', tmp_IceClimMetrics)
+  STM_output_file = file.path(path, 'DataOut', STM_Parameters)
   
   Nsites <- length(sited$Period)
 
@@ -235,12 +242,12 @@ thermopic_model = function(
   }
   
   #------------------------------------------------------------------
-  # OUTPUT tmp_ClimMetrics.csv, tmp_IceClimMetrics.csv and 3_Model_inputs.csv)
+  # OUTPUT
   #------------------------------------------------------------------
   output = list(
-    sited = sited,
-    siteo = siteo,
-    lakep = lakep
+    tmp_ClimMetrics = sited,
+    tmp_IceClimMetrics = siteo,
+    Model_Inputs = lakep
   )
   write.csv(sited, file = sited_output_file, row.names = FALSE)
   write.csv(siteo, file = siteo_output_file, row.names = FALSE)
@@ -384,7 +391,7 @@ thermopic_model = function(
   #------------------------------------------------------------------
   # OUTPUT 4_STM_Parameters.csv
   #------------------------------------------------------------------
-  output$STM = STM
+  output$STM_Parameters = STM
   write.csv(STM, file = STM_output_file, row.names = FALSE)
   structure(
     output,

@@ -66,4 +66,4 @@ unlink(root)
 
 ## Further information
 
-For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorical.md).
+For a more detailed introduction see this [tutorial](inst/doc/thermopic_tutorial.md).

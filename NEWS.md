@@ -1,3 +1,8 @@
+# thermopic 0.0.1.0000
+
+* Changed the argument naming schemes in `thermopic_model` and `thermopic_report` to be more descriptive
+* Fixed the tutorial
+
 # thermopic 0.0.0.9000
 
 * Changed to semantic versioning scheme, in order to follow recommended practice. Thus previous thermopic versions 1, 2, and 3 are followed by `0.0.0.9000`. The first, second, and third zeros are the major, minor, and patch version numbers, and the final 9000 number is the development version.

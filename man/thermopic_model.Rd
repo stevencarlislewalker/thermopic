@@ -4,25 +4,25 @@
 \alias{thermopic_model}
 \title{Fit Thermopic Model}
 \usage{
-thermopic_model(path, laked, sited, lakep_output_file = "3_Model_Inputs.csv",
-  STM_output_file = "4_STM_Parameters.csv",
-  sited_output_file = "tmp_ClimMetrics.csv",
-  siteo_output_file = "tmp_IceClimMetrics.csv", year_fix = 2010)
+thermopic_model(path, Lake, Climate, Model_Inputs = "3_Model_Inputs.csv",
+  STM_Parameters = "4_STM_Parameters.csv",
+  tmp_ClimMetrics = "tmp_ClimMetrics.csv",
+  tmp_IceClimMetrics = "tmp_IceClimMetrics.csv", year_fix = 2010)
 }
 \arguments{
 \item{path}{Character string containing the path to the root of a thermopic project}
 
-\item{laked}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{1_Lake.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.}
+\item{Lake}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{1_Lake.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.}
 
-\item{sited}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{2_Climate.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.}
+\item{Climate}{A \code{\link{data.frame}} or \code{csv} file with schema defined in section C4 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{2_Climate.csv} sub-heading. If a \code{csv} file is used, please place it within the \code{DataIn} folder under the \pkg{thermopic} project in \code{path}.}
 
-\item{lakep_output_file}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{3_Model_Inputs.csv} sub-heading.}
+\item{Model_Inputs}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{3_Model_Inputs.csv} sub-heading. This file contains the inputs needed to calculate the STM parameters.  They include lake measurements, as well as climate and ice variables.}
 
-\item{STM_output_file}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide_v3b.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading.}
+\item{STM_Parameters}{The name of an output \code{csv} file with schema defined in section C5 of the \href{../doc/ThermoPic_Guide.pdf}{ThermoPic Guide} under the \code{4_STM_Parameters.csv} sub-heading.  This file contains estimates of the STM parameters which are used to predict temperature at depth throughout the icefree season.  These estimates are needed to calculate seasonal thermal habitat.  Editing of the columns \code{Do_Space} and \code{Do_ThermoPic} may be done to control output from \code{\link{thermopic_report}}}
 
-\item{sited_output_file}{The name of an output temp file used mainly for debugging}
+\item{tmp_ClimMetrics}{The name of an output temp file used mainly for debugging}
 
-\item{siteo_output_file}{The name of an output temp file used mainly for debugging}
+\item{tmp_IceClimMetrics}{The name of an output temp file used mainly for debugging}
 
 \item{year_fix}{Integer giving a calender year for simplifing the code by
 assigning "year_fix" for calculating Day of Year and Solar elevation/angle.
@@ -31,7 +31,14 @@ for Specified Period. Solar angle for a given day of year varies on 4 year
 cycle, but variation is very small.}
 }
 \value{
-s3 object of class thermopic_model, containing output dataframes
+s3 object of class thermopic_model, containing the following output
+dataframes:
+\describe{
+  \item{tmp_ClimMetrics}{Modified climate table}
+  \item{tmp_IceClimMetrics}{Table of ice climate metrics}
+  \item{Model_Inputs}{Input variables needed to calculate the STM parameters}
+  \item{STM_Parameters}{Estimates of the STM parameters used to predict temperature at depth throughout the icefree season}
+}
 }
 \description{
 Fit Thermopic Model
