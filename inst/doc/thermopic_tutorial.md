@@ -375,4 +375,4 @@ print_directory_tree('../misc/tutorial_project')
 ```
 
 
-![](../misc/tutorial_project/DataOut/ThermoPics/4_Wingiskus Lake_15-3543-56122_P2001-2010.jpeg)
+![](https://github.com/stevencarlislewalker/thermopic/blob/master/inst/misc/tutorial_project/DataOut/ThermoPics/4_Wingiskus%20Lake_15-3543-56122_P2001-2010.jpeg)
